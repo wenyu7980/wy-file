@@ -1,0 +1,10 @@
+server:
+  port: 8005
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    schema:
+      - classpath:schema-file.sql
