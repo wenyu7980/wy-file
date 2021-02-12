@@ -38,4 +38,11 @@ public interface FileComponent {
      * @param publicFlag
      */
     FileUploadUrl getUploadUrl(String bucketName, String filename, boolean publicFlag);
+
+    /**
+     * 查询
+     * @param id
+     * @return
+     */
+    FileDomain getFileDomain(String id);
 }

@@ -66,4 +66,15 @@ public class FileComponentImpl implements FileComponent {
           fileThirdUploadService.getUploadPresignedUrl(bucketName, entity.getId(), this.fileProperty.getPutTimeout()));
         return url;
     }
+
+    @Override
+    public FileDomain getFileDomain(String id) {
+        FileEntity entity = fileService.findById(id);
+        FileDomain domain = new FileDomain();
+        domain.setPath(fileThirdDownloadService
+          .getDownloadPresignedUrl(entity.getBucketName(), entity.getId(), this.fileProperty.getGetTimeout()));
+        domain.setFileName(entity.getFilename());
+        domain.setId(entity.getId());
+        return domain;
+    }
 }
