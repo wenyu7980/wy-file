@@ -22,5 +22,5 @@ public interface FileThirdDownloadService {
      * @param timeout 秒，最大1天
      * @return
      */
-    String getDownloadPresignedUrl(String bucketName, String objectName, long timeout);
+    String getDownloadPresignedUrl(String bucketName, String objectName, int timeout);
 }

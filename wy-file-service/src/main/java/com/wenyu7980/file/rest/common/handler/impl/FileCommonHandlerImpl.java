@@ -2,6 +2,7 @@ package com.wenyu7980.file.rest.common.handler.impl;
 
 import com.wenyu7980.file.component.FileComponent;
 import com.wenyu7980.file.domain.FileDomain;
+import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 import com.wenyu7980.file.rest.common.handler.FileCommonHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,5 +31,10 @@ public class FileCommonHandlerImpl implements FileCommonHandler {
     @Override
     public void download(String id, HttpServletResponse response) throws IOException {
         fileComponent.download(id, response);
+    }
+
+    @Override
+    public FileUploadUrl getUploadUrl(String bucketName, String filename, boolean publicFlag) {
+        return fileComponent.getUploadUrl(bucketName, filename, publicFlag);
     }
 }

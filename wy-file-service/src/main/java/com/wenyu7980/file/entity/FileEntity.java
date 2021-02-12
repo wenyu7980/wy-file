@@ -25,6 +25,11 @@ public class FileEntity {
     private String bucketName;
     /** 是否公开 */
     private Boolean publicFlag;
+    /** 是否是待定 */
+    private Boolean pendingFlag;
+    /** 待定截止日期 */
+    private LocalDateTime pendingDeadline;
+    /** 创建时间 */
     private LocalDateTime createdDateTime;
 
     protected FileEntity() {
@@ -34,13 +39,21 @@ public class FileEntity {
         this.filename = filename;
         this.publicFlag = publicFlag;
         this.bucketName = bucketName;
+        this.pendingFlag = false;
         this.createdDateTime = LocalDateTime.now();
     }
 
-    public FileEntity(String bucketName, Boolean publicFlag) {
+    public FileEntity(String bucketName, String filename, Boolean publicFlag, Integer timeout) {
         this.bucketName = bucketName;
         this.publicFlag = publicFlag;
         this.createdDateTime = LocalDateTime.now();
+        this.filename = filename;
+        this.pendingFlag = true;
+        this.pendingDeadline = LocalDateTime.now().plusSeconds(timeout);
+    }
+
+    public void setPending() {
+        this.pendingFlag = false;
     }
 
     public String getId() {
@@ -61,5 +74,13 @@ public class FileEntity {
 
     public LocalDateTime getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    public Boolean getPendingFlag() {
+        return pendingFlag;
+    }
+
+    public LocalDateTime getPendingDeadline() {
+        return pendingDeadline;
     }
 }

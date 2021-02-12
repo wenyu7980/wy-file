@@ -22,5 +22,5 @@ public interface FileThirdUploadService {
      * @param timeout 秒，最大1天
      * @return
      */
-    String getUploadPresignedUrl(String bucketName, String objectName, long timeout);
+    String getUploadPresignedUrl(String bucketName, String objectName, int timeout);
 }

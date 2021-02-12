@@ -7,6 +7,9 @@ import com.wenyu7980.file.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  *
  * @author wenyu
@@ -24,5 +27,10 @@ public class FileServiceImpl implements FileService {
     @Override
     public FileEntity findById(String id) {
         return fileRepo.findById(id).orElseThrow(() -> new NotFoundException("文件{0}不存在", id));
+    }
+
+    @Override
+    public List<FileEntity> findByPending(LocalDateTime dateTime) {
+        return fileRepo.findByPendingFlagAndPendingDeadlineGreaterThan(true, dateTime);
     }
 }

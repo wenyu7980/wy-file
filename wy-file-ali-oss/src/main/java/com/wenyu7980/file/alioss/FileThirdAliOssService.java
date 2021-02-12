@@ -46,7 +46,7 @@ public class FileThirdAliOssService implements FileThirdUploadService, FileThird
     }
 
     @Override
-    public String getDownloadPresignedUrl(String bucketName, String objectName, long timeout) {
+    public String getDownloadPresignedUrl(String bucketName, String objectName, int timeout) {
         Date expiration = new Date(System.currentTimeMillis() + timeout * 1000);
         return this.wideOssClient.generatePresignedUrl(bucketName, objectName, expiration, HttpMethod.GET).getPath();
     }
@@ -62,7 +62,7 @@ public class FileThirdAliOssService implements FileThirdUploadService, FileThird
     }
 
     @Override
-    public String getUploadPresignedUrl(String bucketName, String objectName, long timeout) {
+    public String getUploadPresignedUrl(String bucketName, String objectName, int timeout) {
         Date expiration = new Date(System.currentTimeMillis() + timeout * 1000);
         return this.wideOssClient.generatePresignedUrl(bucketName, objectName, expiration, HttpMethod.PUT).getPath();
     }

@@ -6,6 +6,8 @@ CREATE TABLE `wy_file_info`(
   `bucket_name` varchar(256) COMMENT 'bucket名称',
   `public_flag` bit(1) default 0 COMMENT '是否公开',
   `created_date_time` datetime COMMENT '创建时间',
+  `pending_flag` bit(1) default 0 COMMENT '待定flag',
+  `pending_deadline` datetime COMMENT '截止日期',
   primary key(`id`)
 )
 ENGINE=innodb DEFAULT CHARACTER SET utf8mb4

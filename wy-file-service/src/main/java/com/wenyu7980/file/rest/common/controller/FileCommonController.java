@@ -1,6 +1,7 @@
 package com.wenyu7980.file.rest.common.controller;
 
 import com.wenyu7980.file.domain.FileDomain;
+import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 import com.wenyu7980.file.rest.common.handler.FileCommonHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,5 +38,14 @@ public class FileCommonController {
     @GetMapping("{id}")
     public void download(@PathVariable("id") String id, HttpServletResponse response) throws IOException {
         fileCommonHandler.download(id, response);
+    }
+
+    @ApiOperation("上传url")
+    @GetMapping("upload")
+    public FileUploadUrl getUploadUrl(
+      @ApiParam("是否公开") @RequestParam(name = "publicFlag", defaultValue = "false") boolean publicFlag,
+      @ApiParam("bucket名称") @RequestParam(required = false) String bucketName,
+      @ApiParam("文件名") @RequestParam String filename) {
+        return fileCommonHandler.getUploadUrl(bucketName, filename, publicFlag);
     }
 }

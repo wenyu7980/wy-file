@@ -2,6 +2,9 @@ package com.wenyu7980.file.service;
 
 import com.wenyu7980.file.entity.FileEntity;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  *
  * @author wenyu
@@ -20,4 +23,11 @@ public interface FileService {
      * @return
      */
     FileEntity findById(String id);
+
+    /**
+     * pending
+     * @param dateTime
+     * @return
+     */
+    List<FileEntity> findByPending(LocalDateTime dateTime);
 }

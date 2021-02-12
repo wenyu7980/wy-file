@@ -44,10 +44,9 @@ public class FileThirdMinioService implements FileThirdUploadService, FileThirdD
     }
 
     @Override
-    public String getDownloadPresignedUrl(String bucketName, String objectName, long timeout) {
+    public String getDownloadPresignedUrl(String bucketName, String objectName, int timeout) {
         try {
-            return this.minioClient
-              .getPresignedObjectUrl(Method.GET, bucketName, objectName, Math.toIntExact(timeout), null);
+            return this.minioClient.getPresignedObjectUrl(Method.GET, bucketName, objectName, timeout, null);
         } catch (Exception e) {
             throw new MinioRuntimeException("minio getDownloadPresignedUrl失败", e);
         }
@@ -74,10 +73,9 @@ public class FileThirdMinioService implements FileThirdUploadService, FileThirdD
     }
 
     @Override
-    public String getUploadPresignedUrl(String bucketName, String objectName, long timeout) {
+    public String getUploadPresignedUrl(String bucketName, String objectName, int timeout) {
         try {
-            return this.minioClient
-              .getPresignedObjectUrl(Method.GET, bucketName, objectName, Math.toIntExact(timeout), null);
+            return this.minioClient.getPresignedObjectUrl(Method.PUT, bucketName, objectName, timeout, null);
         } catch (Exception e) {
             throw new MinioRuntimeException("minio getUploadPresignedUrl失败", e);
         }

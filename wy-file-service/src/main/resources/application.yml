@@ -2,20 +2,25 @@ spring:
   profiles:
     include: basic
   datasource:
-    url: jdbc:mysql://localhost:3306/file?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://192.168.3.200:3306/file?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: password
     initialization-mode: always
 application:
   file:
-    bucket: test
-    timeout: 3600
+    defaultBucket: test
+#    candidateBuckets:
+#      - test
+    timeout:
+      get: 86400
+      put: 3600
     minio:
       url: http://192.168.3.200:9000
       accessKey: AKIAIOSFODNN7EXAMPLE
       accessSecret: AKIAIOSFODNN7EXAMPLEAKIAIOSFODNN7EXAMPLE
 #    alioss:
 #      endpoint:
+
 #        wide: oss-cn-beijing.aliyuncs.com
 #        internal: oss-cn-beijing.aliyuncs.com
 #      accessKeyId: LTAI4GDD953nVcNRs5YdYcQB
