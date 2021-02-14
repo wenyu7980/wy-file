@@ -24,5 +24,5 @@ public interface FileInternalHandler {
      * @param id
      * @return
      */
-    FileDomain getFile(String id);
+    FileDomain getFileDomain(String id);
 }

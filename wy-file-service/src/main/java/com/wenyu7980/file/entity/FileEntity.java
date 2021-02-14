@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Entity
 public class FileEntity {
     @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(generator = "idGenerator")
+    @GenericGenerator(name = "UUID", strategy = "uuid32")
+    @GeneratedValue(generator = "UUID")
     private String id;
     /** 文件名 */
     private String filename;

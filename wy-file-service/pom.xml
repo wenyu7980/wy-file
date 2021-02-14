@@ -16,13 +16,21 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-file-common-api</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-file-common-api</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
@@ -31,16 +39,7 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-common-authentication</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-common-exception-config</artifactId>
+            <artifactId>wy-common-data-jpa</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -49,9 +48,23 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-common-authentication</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-common-exception-config</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-authentication-common-feign</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
             <artifactId>wy-file-minio</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
-
 </project>

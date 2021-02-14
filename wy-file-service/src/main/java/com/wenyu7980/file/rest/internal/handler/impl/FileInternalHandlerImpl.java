@@ -23,7 +23,7 @@ public class FileInternalHandlerImpl implements FileInternalHandler {
     }
 
     @Override
-    public FileDomain getFile(String id) {
+    public FileDomain getFileDomain(String id) {
         return fileComponent.getFileDomain(id);
     }
 }

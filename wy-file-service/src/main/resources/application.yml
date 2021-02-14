@@ -6,11 +6,21 @@ spring:
     username: root
     password: password
     initialization-mode: always
+  redis:
+    host: 192.168.3.200
+    port: 6379
+    password: password
+    database: 2
+  application:
+    name: wy-file
+  cloud:
+    nacos:
+      discovery:
+        server-addr: "127.0.0.1:8848"
 application:
   file:
+    #    check: false
     defaultBucket: test
-#    candidateBuckets:
-#      - test
     timeout:
       get: 86400
       put: 3600
@@ -20,7 +30,6 @@ application:
       accessSecret: AKIAIOSFODNN7EXAMPLEAKIAIOSFODNN7EXAMPLE
 #    alioss:
 #      endpoint:
-
 #        wide: oss-cn-beijing.aliyuncs.com
 #        internal: oss-cn-beijing.aliyuncs.com
 #      accessKeyId: LTAI4GDD953nVcNRs5YdYcQB

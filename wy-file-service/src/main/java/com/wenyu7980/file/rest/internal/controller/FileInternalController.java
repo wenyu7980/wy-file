@@ -42,6 +42,6 @@ public class FileInternalController implements FileInternalService {
 
     @Override
     public FileDomain getFile(String id) {
-        return fileInternalHandler.getFile(id);
+        return fileInternalHandler.getFileDomain(id);
     }
 }
