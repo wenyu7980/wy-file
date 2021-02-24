@@ -1,36 +1,10 @@
 spring:
-  profiles:
-    include: basic
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate.ejb.identifier_generator_strategy_provider: com.wenyu7980.data.jpa.generator.IdGeneratorStrategyProvider
   datasource:
-    url: jdbc:mysql://192.168.3.200:3306/file?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: password
-    initialization-mode: always
-  redis:
-    host: 192.168.3.200
-    port: 6379
-    password: password
-    database: 2
-  application:
-    name: wy-file
-  cloud:
-    nacos:
-      discovery:
-        server-addr: "127.0.0.1:8848"
-application:
-  file:
-    #    check: false
-    defaultBucket: test
-    timeout:
-      get: 86400
-      put: 3600
-    minio:
-      url: http://192.168.3.200:9000
-      accessKey: AKIAIOSFODNN7EXAMPLE
-      accessSecret: AKIAIOSFODNN7EXAMPLEAKIAIOSFODNN7EXAMPLE
-#    alioss:
-#      endpoint:
-#        wide: oss-cn-beijing.aliyuncs.com
-#        internal: oss-cn-beijing.aliyuncs.com
-#      accessKeyId: LTAI4GDD953nVcNRs5YdYcQB
-#      accessKeySecret: VMzGX5uPYEONdURuFfbx2xbgz4y9ab
+    schema:
+      - classpath:schema-file.sql

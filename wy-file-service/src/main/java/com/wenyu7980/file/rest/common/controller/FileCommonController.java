@@ -1,5 +1,6 @@
 package com.wenyu7980.file.rest.common.controller;
 
+import com.wenyu7980.authentication.common.AuthRequest;
 import com.wenyu7980.file.domain.FileDomain;
 import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 import com.wenyu7980.file.rest.common.handler.FileCommonHandler;
@@ -27,6 +28,7 @@ public class FileCommonController {
 
     @ApiOperation("上传文件")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @AuthRequest(required = false)
     public FileDomain upload(
       @ApiParam("是否公开") @RequestParam(name = "publicFlag", defaultValue = "false") boolean publicFlag,
       @ApiParam("bucket名称") @RequestParam(required = false) String bucketName, @RequestParam("file") MultipartFile file)
@@ -36,12 +38,14 @@ public class FileCommonController {
 
     @ApiOperation("下载文件")
     @GetMapping("{id}")
+    @AuthRequest(required = false)
     public void download(@PathVariable("id") String id, HttpServletResponse response) throws IOException {
         fileCommonHandler.download(id, response);
     }
 
     @ApiOperation("上传url")
     @GetMapping("upload")
+    @AuthRequest(required = false)
     public FileUploadUrl getUploadUrl(
       @ApiParam("是否公开") @RequestParam(name = "publicFlag", defaultValue = "false") boolean publicFlag,
       @ApiParam("bucket名称") @RequestParam(required = false) String bucketName,

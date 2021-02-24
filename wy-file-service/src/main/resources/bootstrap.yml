@@ -1,0 +1,15 @@
+server:
+  port: 8002
+spring:
+  profiles:
+    active: ${profile.env}
+  application:
+    name: ${parent.artifactId}
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.discovery.address}
+      config:
+        server-addr: ${nacos.config.address}
+        file-extension: yaml
+        group: ${nacos.config.group}
