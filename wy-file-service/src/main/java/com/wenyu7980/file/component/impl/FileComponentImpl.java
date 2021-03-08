@@ -1,6 +1,6 @@
 package com.wenyu7980.file.component.impl;
 
-import com.wenyu7980.common.authentication.util.AuthenticationUtils;
+import com.wenyu7980.common.context.domain.ContextUtils;
 import com.wenyu7980.common.exceptions.code400.code401.InsufficientException;
 import com.wenyu7980.file.FileThirdDownloadService;
 import com.wenyu7980.file.FileThirdUploadService;
@@ -44,7 +44,7 @@ public class FileComponentImpl implements FileComponent {
         }
         FileEntity entity = fileService.save(new FileEntity(filename, bucketName, publicFlag));
         fileThirdUploadService.putObject(bucketName, entity.getId(), inputStream);
-        fileCheckService.register(entity.getId(), AuthenticationUtils.userId(), this.fileProperty.getPutTimeout());
+        fileCheckService.register(entity.getId(), ContextUtils.userId(), this.fileProperty.getPutTimeout());
         String path = fileThirdDownloadService
           .getDownloadPresignedUrl(bucketName, entity.getId(), this.fileProperty.getPutTimeout());
         fileDomain.setId(entity.getId());
@@ -56,7 +56,7 @@ public class FileComponentImpl implements FileComponent {
     @Override
     public void download(String id, HttpServletResponse response) throws IOException {
         FileEntity entity = fileService.findById(id);
-        if (!fileCheckService.check(id, AuthenticationUtils.userId())) {
+        if (!fileCheckService.check(id, ContextUtils.userId())) {
             throw new InsufficientException("文件权限不足");
         }
         IOUtils.copy(fileThirdDownloadService.getObject(entity.getBucketName(), id), response.getOutputStream());
@@ -69,7 +69,7 @@ public class FileComponentImpl implements FileComponent {
         }
         FileEntity entity = fileService
           .save(new FileEntity(bucketName, filename, publicFlag, this.fileProperty.getPutTimeout()));
-        fileCheckService.register(entity.getId(), AuthenticationUtils.userId(), this.fileProperty.getPutTimeout());
+        fileCheckService.register(entity.getId(), ContextUtils.userId(), this.fileProperty.getPutTimeout());
         FileUploadUrl url = new FileUploadUrl();
         url.setId(entity.getId());
         url.setPath(
@@ -80,7 +80,7 @@ public class FileComponentImpl implements FileComponent {
     @Override
     public FileDomain getFileDomain(String id) {
         FileEntity entity = fileService.findById(id);
-        fileCheckService.register(entity.getId(), AuthenticationUtils.userId(), this.fileProperty.getGetTimeout());
+        fileCheckService.register(entity.getId(), ContextUtils.userId(), this.fileProperty.getGetTimeout());
         FileDomain domain = new FileDomain();
         domain.setPath(fileThirdDownloadService
           .getDownloadPresignedUrl(entity.getBucketName(), entity.getId(), this.fileProperty.getGetTimeout()));

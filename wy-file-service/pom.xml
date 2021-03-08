@@ -39,7 +39,7 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-common-data-jpa</artifactId>
+            <artifactId>wy-common-data-jpa-dependencies</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -48,17 +48,12 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-common-authentication</artifactId>
+            <artifactId>wy-common-dependencies</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-common-exception-config</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-authentication-common-feign</artifactId>
+            <artifactId>wy-authentication-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
