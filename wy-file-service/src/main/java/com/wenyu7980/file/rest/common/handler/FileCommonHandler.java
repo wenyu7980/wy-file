@@ -1,5 +1,6 @@
 package com.wenyu7980.file.rest.common.handler;
 
+import com.wenyu7980.file.api.domain.FileInternal;
 import com.wenyu7980.file.domain.FileDomain;
 import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 

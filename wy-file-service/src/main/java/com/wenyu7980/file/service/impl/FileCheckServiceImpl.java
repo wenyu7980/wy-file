@@ -41,6 +41,6 @@ public class FileCheckServiceImpl implements FileCheckService {
     }
 
     private String getKey(String id, String userId) {
-        return id + userId == null ? "" : userId;
+        return id + (userId == null ? "" : userId);
     }
 }

@@ -45,4 +45,12 @@ public interface FileComponent {
      * @return
      */
     FileDomain getFileDomain(String id);
+
+    /**
+     * 检查
+     * @param id
+     * @param userId
+     * @return
+     */
+    boolean check(String id, String userId);
 }

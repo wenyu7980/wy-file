@@ -8,16 +8,21 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>wy-file-api</artifactId>
+    <artifactId>wy-file-starter</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-file-aggregation</artifactId>
+            <artifactId>wy-file-api</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
@@ -29,4 +34,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

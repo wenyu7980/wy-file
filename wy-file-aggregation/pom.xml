@@ -8,17 +8,16 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>wy-file-api</artifactId>
+    <artifactId>wy-file-aggregation</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-aggregation-annotation</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-file-aggregation</artifactId>
-            <version>1.0.0</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -29,4 +28,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

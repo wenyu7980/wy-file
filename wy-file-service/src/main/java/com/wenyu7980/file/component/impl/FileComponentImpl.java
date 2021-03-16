@@ -88,4 +88,9 @@ public class FileComponentImpl implements FileComponent {
         domain.setId(entity.getId());
         return domain;
     }
+
+    @Override
+    public boolean check(String id, String userId) {
+        return fileCheckService.check(id, userId);
+    }
 }

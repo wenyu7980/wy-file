@@ -1,6 +1,6 @@
 package com.wenyu7980.file.rest.internal.handler;
 
-import com.wenyu7980.file.domain.FileDomain;
+import com.wenyu7980.file.api.domain.FileInternal;
 
 import java.io.InputStream;
 
@@ -17,12 +17,13 @@ public interface FileInternalHandler {
      * @param inputStream
      * @return
      */
-    FileDomain upload(String bucketName, String originalFilename, boolean publicFlag, InputStream inputStream);
+    FileInternal upload(String bucketName, String originalFilename, boolean publicFlag, InputStream inputStream);
 
     /**
-     * 获取
+     * 检查
      * @param id
+     * @param userId
      * @return
      */
-    FileDomain getFileDomain(String id);
+    boolean check(String id, String userId);
 }

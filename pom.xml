@@ -14,6 +14,8 @@
         <module>wy-file-service</module>
         <module>wy-file-ali-oss</module>
         <module>wy-file-minio</module>
+        <module>wy-file-aggregation</module>
+        <module>wy-file-starter</module>
     </modules>
     <parent>
         <groupId>com.wenyu7980</groupId>
