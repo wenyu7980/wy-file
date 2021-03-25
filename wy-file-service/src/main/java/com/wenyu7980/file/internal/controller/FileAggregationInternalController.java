@@ -1,8 +1,8 @@
-package com.wenyu7980.file.rest.internal.controller;
+package com.wenyu7980.file.internal.controller;
 
 import com.wenyu7980.file.aggregation.FileAggregation;
 import com.wenyu7980.file.api.service.FileAggregationInternalService;
-import com.wenyu7980.file.rest.internal.handler.FileAggregationInternalHandler;
+import com.wenyu7980.file.internal.handler.FileAggregationInternalHandler;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  *
  * @author wenyu
  */
-@Table(name = "wy_file_info")
+@Table(name = "file_file")
 @Entity
 public class FileEntity {
     @Id
@@ -43,13 +43,17 @@ public class FileEntity {
         this.createdDateTime = LocalDateTime.now();
     }
 
-    public FileEntity(String bucketName, String filename, Boolean publicFlag, Integer timeout) {
+    public FileEntity(String bucketName, Boolean publicFlag, Integer timeout) {
         this.bucketName = bucketName;
         this.publicFlag = publicFlag;
         this.createdDateTime = LocalDateTime.now();
-        this.filename = filename;
         this.pendingFlag = true;
         this.pendingDeadline = LocalDateTime.now().plusSeconds(timeout);
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+        this.pendingFlag = false;
     }
 
     public void setPending() {

@@ -1,8 +1,7 @@
-package com.wenyu7980.file.rest.common.handler;
+package com.wenyu7980.file.common.handler;
 
-import com.wenyu7980.file.api.domain.FileInternal;
+import com.wenyu7980.file.common.domain.FileUploadUrl;
 import com.wenyu7980.file.domain.FileDomain;
-import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public interface FileCommonHandler {
      * 下载
      * @param id
      * @param response
-     * @exception IOException
+     * @exception IOException 文件上传异常
      */
     void download(String id, HttpServletResponse response) throws IOException;
 
@@ -36,8 +35,15 @@ public interface FileCommonHandler {
      * 获取上传地址
      * @return
      * @param bucketName
-     * @param filename
      * @param publicFlag
      */
-    FileUploadUrl getUploadUrl(String bucketName, String filename, boolean publicFlag);
+    FileUploadUrl getUploadUrl(String bucketName, boolean publicFlag);
+
+    /**
+     * 文件名
+     * @param id
+     * @param filename
+     * @return
+     */
+    FileDomain name(String id, String filename);
 }

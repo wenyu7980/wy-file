@@ -1,9 +1,9 @@
-package com.wenyu7980.file.rest.internal.handler.impl;
+package com.wenyu7980.file.internal.handler.impl;
 
 import com.wenyu7980.file.api.domain.FileInternal;
 import com.wenyu7980.file.component.FileComponent;
 import com.wenyu7980.file.domain.FileDomain;
-import com.wenyu7980.file.rest.internal.handler.FileInternalHandler;
+import com.wenyu7980.file.internal.handler.FileInternalHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

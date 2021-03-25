@@ -1,14 +1,16 @@
 package com.wenyu7980.file.component.impl;
 
 import com.wenyu7980.common.context.domain.ContextUtils;
-import com.wenyu7980.common.exceptions.code400.code401.InsufficientException;
+import com.wenyu7980.common.exceptions.code401.InsufficientException;
+import com.wenyu7980.common.exceptions.code409.InconsistentException;
 import com.wenyu7980.file.FileThirdDownloadService;
+import com.wenyu7980.file.FileThirdExistService;
 import com.wenyu7980.file.FileThirdUploadService;
+import com.wenyu7980.file.common.domain.FileUploadUrl;
 import com.wenyu7980.file.component.FileComponent;
 import com.wenyu7980.file.domain.FileDomain;
 import com.wenyu7980.file.entity.FileEntity;
 import com.wenyu7980.file.property.FileProperty;
-import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
 import com.wenyu7980.file.service.FileCheckService;
 import com.wenyu7980.file.service.FileService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -33,6 +35,8 @@ public class FileComponentImpl implements FileComponent {
     private FileThirdUploadService fileThirdUploadService;
     @Autowired
     private FileThirdDownloadService fileThirdDownloadService;
+    @Autowired
+    private FileThirdExistService fileThirdExistService;
     @Autowired
     private FileCheckService fileCheckService;
 
@@ -63,12 +67,11 @@ public class FileComponentImpl implements FileComponent {
     }
 
     @Override
-    public FileUploadUrl getUploadUrl(String bucketName, String filename, boolean publicFlag) {
+    public FileUploadUrl getUploadUrl(String bucketName, boolean publicFlag) {
         if (!fileProperty.getCandidateBuckets().contains(bucketName)) {
             bucketName = this.fileProperty.getDefaultBucket();
         }
-        FileEntity entity = fileService
-          .save(new FileEntity(bucketName, filename, publicFlag, this.fileProperty.getPutTimeout()));
+        FileEntity entity = fileService.save(new FileEntity(bucketName, publicFlag, this.fileProperty.getPutTimeout()));
         fileCheckService.register(entity.getId(), ContextUtils.userId(), this.fileProperty.getPutTimeout());
         FileUploadUrl url = new FileUploadUrl();
         url.setId(entity.getId());
@@ -92,5 +95,19 @@ public class FileComponentImpl implements FileComponent {
     @Override
     public boolean check(String id, String userId) {
         return fileCheckService.check(id, userId);
+    }
+
+    @Override
+    public FileDomain name(String id, String filename) {
+        FileEntity entity = fileService.findById(id);
+        if (!entity.getPendingFlag()) {
+            throw new InconsistentException("文件{0}不是Pending状态", id);
+        }
+        if (!fileThirdExistService.existObject(entity.getBucketName(), entity.getId())) {
+            throw new InconsistentException("文件{0}还未上传", id);
+        }
+        entity.setFilename(filename);
+        fileService.save(entity);
+        return getFileDomain(id);
     }
 }

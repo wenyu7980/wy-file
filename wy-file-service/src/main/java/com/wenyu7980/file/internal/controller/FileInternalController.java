@@ -1,10 +1,10 @@
-package com.wenyu7980.file.rest.internal.controller;
+package com.wenyu7980.file.internal.controller;
 
 import com.wenyu7980.common.context.domain.ContextUtils;
 import com.wenyu7980.common.exceptions.code500.SystemException;
 import com.wenyu7980.file.api.domain.FileInternal;
 import com.wenyu7980.file.api.service.FileInternalService;
-import com.wenyu7980.file.rest.internal.handler.FileInternalHandler;
+import com.wenyu7980.file.internal.handler.FileInternalHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;

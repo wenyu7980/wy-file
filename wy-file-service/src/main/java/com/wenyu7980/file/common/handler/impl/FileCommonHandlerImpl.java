@@ -1,10 +1,9 @@
-package com.wenyu7980.file.rest.common.handler.impl;
+package com.wenyu7980.file.common.handler.impl;
 
+import com.wenyu7980.file.common.domain.FileUploadUrl;
+import com.wenyu7980.file.common.handler.FileCommonHandler;
 import com.wenyu7980.file.component.FileComponent;
-import com.wenyu7980.file.api.domain.FileInternal;
 import com.wenyu7980.file.domain.FileDomain;
-import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
-import com.wenyu7980.file.rest.common.handler.FileCommonHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,6 +24,7 @@ public class FileCommonHandlerImpl implements FileCommonHandler {
     private FileComponent fileComponent;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public FileDomain upload(String bucketName, String originalFilename, InputStream inputStream, boolean publicFlag) {
         return fileComponent.upload(bucketName, originalFilename, inputStream, publicFlag);
     }
@@ -35,7 +35,14 @@ public class FileCommonHandlerImpl implements FileCommonHandler {
     }
 
     @Override
-    public FileUploadUrl getUploadUrl(String bucketName, String filename, boolean publicFlag) {
-        return fileComponent.getUploadUrl(bucketName, filename, publicFlag);
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public FileUploadUrl getUploadUrl(String bucketName, boolean publicFlag) {
+        return fileComponent.getUploadUrl(bucketName, publicFlag);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public FileDomain name(String id, String filename) {
+        return fileComponent.name(id, filename);
     }
 }

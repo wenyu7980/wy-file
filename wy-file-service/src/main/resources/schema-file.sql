@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `wy_file_info`;
+DROP TABLE IF EXISTS `file_file`;
 
-CREATE TABLE `wy_file_info`(
+CREATE TABLE `file_file`(
   `id` varchar(32) NOT NULL COMMENT '用户id',
   `filename` varchar(256) COMMENT '文件名',
   `bucket_name` varchar(256) COMMENT 'bucket名称',

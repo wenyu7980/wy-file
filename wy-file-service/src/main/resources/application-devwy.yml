@@ -5,10 +5,10 @@ spring:
     password: password
     initialization-mode: always
   redis:
-    host: 192.168.3.200
+    host: 192.168.3.201
     port: 6379
     password: password
-    database: 2
+    database: 3
 application:
   file:
     #    check: false
@@ -17,7 +17,7 @@ application:
       get: 86400
       put: 3600
     minio:
-      url: http://192.168.3.200:9000
+      url: http://192.168.3.201:9000
       accessKey: AKIAIOSFODNN7EXAMPLE
       accessSecret: AKIAIOSFODNN7EXAMPLEAKIAIOSFODNN7EXAMPLE
 #    alioss:

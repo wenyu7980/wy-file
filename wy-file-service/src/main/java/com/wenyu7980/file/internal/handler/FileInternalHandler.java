@@ -1,4 +1,4 @@
-package com.wenyu7980.file.rest.internal.handler;
+package com.wenyu7980.file.internal.handler;
 
 import com.wenyu7980.file.api.domain.FileInternal;
 

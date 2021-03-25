@@ -1,4 +1,4 @@
-package com.wenyu7980.file.rest.common.domain;
+package com.wenyu7980.file.common.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 

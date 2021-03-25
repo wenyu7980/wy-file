@@ -1,10 +1,9 @@
-package com.wenyu7980.file.rest.common.controller;
+package com.wenyu7980.file.common.controller;
 
 import com.wenyu7980.authentication.common.AuthRequest;
-import com.wenyu7980.file.api.domain.FileInternal;
+import com.wenyu7980.file.common.domain.FileUploadUrl;
+import com.wenyu7980.file.common.handler.FileCommonHandler;
 import com.wenyu7980.file.domain.FileDomain;
-import com.wenyu7980.file.rest.common.domain.FileUploadUrl;
-import com.wenyu7980.file.rest.common.handler.FileCommonHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -49,8 +48,14 @@ public class FileCommonController {
     @AuthRequest(required = false)
     public FileUploadUrl getUploadUrl(
       @ApiParam("是否公开") @RequestParam(name = "publicFlag", defaultValue = "false") boolean publicFlag,
-      @ApiParam("bucket名称") @RequestParam(required = false) String bucketName,
-      @ApiParam("文件名") @RequestParam String filename) {
-        return fileCommonHandler.getUploadUrl(bucketName, filename, publicFlag);
+      @ApiParam("bucket名称") @RequestParam(required = false) String bucketName) {
+        return fileCommonHandler.getUploadUrl(bucketName, publicFlag);
     }
+
+    @ApiOperation("上传文件名")
+    @PutMapping("{id}/name")
+    public FileDomain name(@PathVariable("id") String id, @ApiParam("文件名") @RequestParam String filename) {
+        return fileCommonHandler.name(id, filename);
+    }
+
 }
