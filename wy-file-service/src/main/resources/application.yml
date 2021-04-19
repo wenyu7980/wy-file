@@ -8,3 +8,6 @@ spring:
   datasource:
     schema:
       - classpath:schema-file.sql
+feign:
+  hystrix:
+    enabled: true
