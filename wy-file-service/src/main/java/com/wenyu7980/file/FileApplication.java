@@ -1,7 +1,7 @@
 package com.wenyu7980.file;
 
 import com.wenyu7980.aggregation.EnableWYAggregation;
-import com.wenyu7980.authentication.common.feign.EnableWYAuthentication;
+import com.wenyu7980.auth.request.EnableWYAuthentication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;

@@ -1,6 +1,6 @@
 package com.wenyu7980.file.internal.controller;
 
-import com.wenyu7980.common.context.domain.ContextUtils;
+import com.wenyu7980.authentication.context.model.ContextUtils;
 import com.wenyu7980.common.exceptions.code500.SystemException;
 import com.wenyu7980.file.api.domain.FileInternal;
 import com.wenyu7980.file.api.service.FileInternalService;

@@ -29,6 +29,11 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-file-aggregation</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
             <artifactId>wy-file-common-api</artifactId>
             <version>1.0.0</version>
         </dependency>

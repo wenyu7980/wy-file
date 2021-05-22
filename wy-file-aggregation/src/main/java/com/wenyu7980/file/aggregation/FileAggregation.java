@@ -1,13 +1,13 @@
 package com.wenyu7980.file.aggregation;
 
-import com.wenyu7980.aggregation.annotation.Aggregation;
+import com.wenyu7980.aggregation.annotation.AggregationType;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  *
  * @author wenyu
  */
-@Aggregation
+@AggregationType
 public class FileAggregation {
     @ApiModelProperty(value = "id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String id;

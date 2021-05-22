@@ -1,6 +1,6 @@
 package com.wenyu7980.file.component.impl;
 
-import com.wenyu7980.common.context.domain.ContextUtils;
+import com.wenyu7980.authentication.context.model.ContextUtils;
 import com.wenyu7980.common.exceptions.code401.InsufficientException;
 import com.wenyu7980.common.exceptions.code409.InconsistentException;
 import com.wenyu7980.file.FileThirdDownloadService;

@@ -1,6 +1,6 @@
 package com.wenyu7980.file.common.controller;
 
-import com.wenyu7980.authentication.common.AuthRequest;
+import com.wenyu7980.auth.request.annotation.AuthRequest;
 import com.wenyu7980.file.common.domain.FileUploadUrl;
 import com.wenyu7980.file.common.handler.FileCommonHandler;
 import com.wenyu7980.file.domain.FileDomain;
