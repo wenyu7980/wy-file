@@ -1,7 +1,7 @@
 package com.wenyu7980.file.starter.util;
 
-import com.wenyu7980.file.api.domain.FileInternal;
-import com.wenyu7980.file.api.service.FileInternalService;
+import com.wenyu7980.file.api.domain.File;
+import com.wenyu7980.file.api.service.FileFacade;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -20,30 +20,30 @@ import java.io.OutputStream;
  */
 @Component
 public class FileUtils {
-    private static FileInternalService fileInternalService;
+    private static FileFacade fileFacade;
 
     @Autowired
-    private FileUtils(FileInternalService fileInternalService) {
-        FileUtils.fileInternalService = fileInternalService;
+    private FileUtils(FileFacade fileFacade) {
+        FileUtils.fileFacade = fileFacade;
     }
 
     public static boolean checkFileId(String id) {
-        return fileInternalService.check(id);
+        return fileFacade.check(id);
     }
 
-    public static FileInternal upload(String fileName, InputStream inputStream) {
+    public static File upload(String fileName, InputStream inputStream) {
         return upload(fileName, inputStream, null, false);
     }
 
-    public static FileInternal upload(String fileName, InputStream inputStream, boolean publicFlag) {
+    public static File upload(String fileName, InputStream inputStream, boolean publicFlag) {
         return upload(fileName, inputStream, null, publicFlag);
     }
 
-    public static FileInternal upload(String fileName, InputStream inputStream, String bucketName) {
+    public static File upload(String fileName, InputStream inputStream, String bucketName) {
         return upload(fileName, inputStream, bucketName, false);
     }
 
-    public static FileInternal upload(String fileName, InputStream inputStream, String bucketName, boolean publicFlag) {
+    public static File upload(String fileName, InputStream inputStream, String bucketName, boolean publicFlag) {
         FileItemFactory factory = new DiskFileItemFactory();
         FileItem item = factory.createItem("file", MediaType.ALL_VALUE, true, fileName);
         try (OutputStream os = item.getOutputStream()) {
@@ -51,6 +51,6 @@ public class FileUtils {
         } catch (Exception e) {
             throw new IllegalArgumentException("Invalid file: " + e, e);
         }
-        return fileInternalService.upload(publicFlag, bucketName, new CommonsMultipartFile(item));
+        return fileFacade.upload(publicFlag, bucketName, new CommonsMultipartFile(item));
     }
 }

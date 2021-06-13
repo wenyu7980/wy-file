@@ -100,14 +100,13 @@ public class FileComponentImpl implements FileComponent {
     @Override
     public FileDomain name(String id, String filename) {
         FileEntity entity = fileService.findById(id);
-        if (!entity.getPendingFlag()) {
-            throw new InconsistentException("文件{0}不是Pending状态", id);
+        if (entity.getPendingFlag()) {
+            if (!fileThirdExistService.existObject(entity.getBucketName(), entity.getId())) {
+                throw new InconsistentException("文件{0}还未上传", id);
+            }
+            entity.setFilename(filename);
+            fileService.save(entity);
         }
-        if (!fileThirdExistService.existObject(entity.getBucketName(), entity.getId())) {
-            throw new InconsistentException("文件{0}还未上传", id);
-        }
-        entity.setFilename(filename);
-        fileService.save(entity);
         return getFileDomain(id);
     }
 }

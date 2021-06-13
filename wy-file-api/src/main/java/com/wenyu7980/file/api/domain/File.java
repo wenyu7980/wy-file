@@ -4,8 +4,10 @@ package com.wenyu7980.file.api.domain;
  *
  * @author wenyu
  */
-public class FileInternal {
+public class File {
+    /** 文件id */
     private String id;
+    /** 文件名 */
     private String fileName;
 
     public String getId() {

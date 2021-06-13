@@ -3,7 +3,7 @@ package com.wenyu7980.file.internal.handler.impl;
 import com.wenyu7980.file.aggregation.FileAggregation;
 import com.wenyu7980.file.component.FileComponent;
 import com.wenyu7980.file.domain.FileDomain;
-import com.wenyu7980.file.internal.handler.FileAggregationInternalHandler;
+import com.wenyu7980.file.internal.handler.FileAggregationHandler;
 import com.wenyu7980.file.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author wenyu
  */
 @Component
-public class FileAggregationInternalHandlerImpl implements FileAggregationInternalHandler {
+public class FileAggregationHandlerImpl implements FileAggregationHandler {
     @Autowired
     private FileService fileService;
     @Autowired
